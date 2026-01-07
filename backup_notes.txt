@@ -1,0 +1,4 @@
+Changes planned:
+- Update URDF plugins to output namespaced Gazebo topics via xacro args.
+- Add namespace propagation in turtlebot4.urdf.xacro.
+- Keep bridge expand_gz_topic_names enabled to match namespaced GZ topics.

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:macro name="oakd" params="name:=oakd parent_link *origin model:=pro">
+<xacro:macro name="oakd" params="name:=oakd parent_link *origin model:=pro namespace:=''">
   <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/icreate/common_properties.urdf.xacro"/>
 
   <xacro:property name="mass"       value="0.061"/>
@@ -137,7 +137,7 @@
       </camera>
       <update_rate>10</update_rate>
       <visualize>true</visualize>
-      <topic>rgbd_camera</topic>
+      <topic>${namespace}/rgbd_camera</topic>
     </sensor>
     <xacro:material_darkgray/>
   </gazebo>

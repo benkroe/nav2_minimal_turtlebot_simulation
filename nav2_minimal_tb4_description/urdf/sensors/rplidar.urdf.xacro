@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-<xacro:macro name="rplidar" params="name parent_link gazebo *origin">
+<xacro:macro name="rplidar" params="name parent_link gazebo namespace:='' *origin">
   <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/icreate/common_properties.urdf.xacro"/>
 
   <xacro:property name="mass"       value="0.17"/>
@@ -38,7 +38,7 @@
     <xacro:ray_sensor sensor_name="${name}" gazebo="${gazebo}" 
                   update_rate="10.0" visualize="true" 
                   h_samples="360" h_res="1.0" h_min_angle="0.000" h_max_angle="6.280000" 
-                  r_min="0.164" r_max="20.0" r_res="0.01">
+                  r_min="0.164" r_max="20.0" r_res="0.01" namespace="${namespace}">
                   <plugin name="dummy" filename="dummyfile"></plugin>
     </xacro:ray_sensor>
     <xacro:material_darkgray/>
