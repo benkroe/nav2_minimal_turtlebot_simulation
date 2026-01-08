@@ -24,7 +24,7 @@ def generate_launch_description() -> LaunchDescription:
     robot_sdf = LaunchConfiguration('robot_sdf')
     rviz_for_all_robots = LaunchConfiguration('rviz_for_all_robots')
 
-    # Default robot configurations. Extend or make this YAML-driven later.
+    # Default robot configurations.
     # Each entry: namespace, name, x, y, z, R, P, Y
     default_robot_configs: List[Dict[str, str]] = [
         {'namespace': 'tb1', 'name': 'tb4_1', 'x': '0.0',  'y': '0.0',  'z': '0.05', 'R': '0.0', 'P': '0.0', 'Y': '0.0'},
