@@ -55,7 +55,7 @@ def generate_launch_description() -> LaunchDescription:
         description='Path to TurtleBot4 URDF/xacro',
     )
     declare_rviz_first_cmd = DeclareLaunchArgument(
-        'rviz_for_all_robots', default_value='False', description='Launch RViz for each robot'
+        'rviz_for_all_robots', default_value='True', description='Launch RViz for each robot'
     )
 
     # Start the simulation world once (no robot, no rviz at sim level)

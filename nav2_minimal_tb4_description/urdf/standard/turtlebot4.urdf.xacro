@@ -6,6 +6,7 @@
   <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/icreate/create3.urdf.xacro" />
   <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/sensors/rplidar.urdf.xacro" />
   <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/sensors/oakd.urdf.xacro" />
+  <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/sensors/proximity.urdf.xacro" />
   <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/sensors/camera_bracket.urdf.xacro" />
   <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/standard/tower_standoff.urdf.xacro" />
   <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/standard/tower_sensor_plate.urdf.xacro" />
@@ -144,5 +145,8 @@
   <xacro:oakd model="pro" parent_link="oakd_camera_bracket" namespace="$(arg namespace)">
     <origin xyz="${oakd_pro_x_offset} ${oakd_pro_y_offset} ${oakd_pro_z_offset}"/>
   </xacro:oakd>
+
+  <!-- Proximity sensors ring on base_link -->
+  <xacro:proximity_ring parent_link="base_link" gazebo="$(arg gazebo)" namespace="$(arg namespace)" radius="0.16" z_offset="0.12"/>
 
 </robot>
