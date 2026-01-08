@@ -94,10 +94,15 @@
   gz_type_name: "gz.msgs.LaserScan"
   direction: GZ_TO_ROS
 
-# Ground truth world poses (all models)
-- ros_topic_name: "world/pose"
-  gz_topic_name: "/world/mission/pose/info"
-  ros_type_name: "tf2_msgs/msg/TFMessage"
-  gz_type_name: "gz.msgs.Pose_V"
+# Ground truth odometry
+- ros_topic_name: "ground_truth_odom"
+  gz_topic_name: "ground_truth_odom"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
   direction: GZ_TO_ROS
+
+
+
+
+
 
