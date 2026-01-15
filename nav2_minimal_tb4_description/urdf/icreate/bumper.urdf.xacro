@@ -27,18 +27,18 @@ functional, while the 4 remaining ones are created as dummy links. -->
   </joint>
   <link name="${link_name}">
     <visual>
-      <origin xyz="0.08 0 0" rpy="0 0 0"/>
+      <origin xyz="0.015 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.20 0.25 0.08"/>
+        <cylinder radius="0.17" length="0.03"/>
       </geometry>
       <material name="darkgrey">
         <color rgba="0.2 0.2 0.2 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="0.08 0 0.05" rpy="0 0 0"/>
+      <origin xyz="0.015 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size="0.20 0.25 0.08"/>
+        <cylinder radius="0.164" length="0.03"/>
       </geometry>
     </collision>
     <xacro:insert_block name="inertial"/>

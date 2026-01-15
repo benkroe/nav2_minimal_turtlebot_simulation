@@ -157,7 +157,7 @@
   </xacro:oakd>
 
   <!-- Proximity sensors ring on base_link -->
-  <xacro:proximity_ring parent_link="base_link" gazebo="$(arg gazebo)" namespace="$(arg namespace)" radius="0.16" z_offset="0.12"/>
+  <xacro:proximity_ring parent_link="base_link" gazebo="$(arg gazebo)" namespace="$(arg namespace)" radius="0.16" z_offset="0.05"/>
 
   <!-- Ground truth odometry publisher for Gazebo -->
   <xacro:arg name="gazebo" default=""/>

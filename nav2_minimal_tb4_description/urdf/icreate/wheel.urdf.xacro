@@ -41,7 +41,7 @@
     <slip2>0.1</slip2>
     <kp>200000.0</kp>
     <kd>20.0</kd>
-    <minDepth>0.003</minDepth>
+    <minDepth>0.001</minDepth>
     <maxVel>1.0</maxVel>
     <material>Gazebo/DarkGrey</material>
   </gazebo>
