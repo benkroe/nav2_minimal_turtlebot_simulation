@@ -1,9 +1,5 @@
 # Headless bridge config (no joint_states, no ground_truth_odom for performance)
-- ros_topic_name: "/clock"
-  gz_topic_name: "/clock"
-  ros_type_name: "rosgraph_msgs/msg/Clock"
-  gz_type_name: "gz.msgs.Clock"
-  direction: GZ_TO_ROS
+# Clock is bridged globally in simulation.launch.py to avoid duplicate publishers
 
 # odom from DiffDrive plugin
 - ros_topic_name: "odom"

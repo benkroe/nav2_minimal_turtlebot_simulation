@@ -185,6 +185,18 @@ def generate_launch_description():
     set_env_vars_resources = AppendEnvironmentVariable(
             'GZ_SIM_RESOURCE_PATH',
             os.path.join(sim_dir, 'worlds'))
+    
+    # Global clock bridge - only one instance to avoid duplicate /clock publishers
+    clock_bridge = Node(
+        condition=IfCondition(use_simulator),
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='clock_bridge',
+        output='screen',
+        arguments=['/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock'],
+        parameters=[{'use_sim_time': use_sim_time}]
+    )
+    
     gazebo_client = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(get_package_share_directory('ros_gz_sim'),
@@ -232,6 +244,7 @@ def generate_launch_description():
     ld.add_action(set_env_vars_resources)
     ld.add_action(world_sdf_xacro)
     ld.add_action(remove_temp_sdf_file)
+    ld.add_action(clock_bridge)
     ld.add_action(gz_robot)
     ld.add_action(gazebo_server)
     ld.add_action(gazebo_client)

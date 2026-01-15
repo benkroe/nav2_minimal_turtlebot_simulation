@@ -2,6 +2,10 @@
 <robot name="turtlebot4" xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- Namespace for Gazebo topics -->
   <xacro:arg name="namespace" default=""/>
+  
+  <!-- Enable/disable RPLIDAR sensor (set to 0 to disable for performance testing) -->
+  <xacro:property name="enable_rplidar" value="0" />
+  
   <!-- Base create3 model -->
   <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/icreate/create3.urdf.xacro" />
   <xacro:include filename="$(find nav2_minimal_tb4_description)/urdf/sensors/rplidar.urdf.xacro" />
@@ -137,10 +141,12 @@
   </xacro:tower_sensor_plate>
 
   <!-- Turtlebot4 sensor definitions -->
-  <xacro:rplidar name="rplidar" parent_link="shell_link" gazebo="$(arg gazebo)" namespace="$(arg namespace)">
-    <origin xyz="${rplidar_x_offset} ${rplidar_y_offset} ${rplidar_z_offset}"
-            rpy="0 0 ${pi/2}"/>
-  </xacro:rplidar>
+  <xacro:if value="${enable_rplidar}">
+    <xacro:rplidar name="rplidar" parent_link="shell_link" gazebo="$(arg gazebo)" namespace="$(arg namespace)">
+      <origin xyz="${rplidar_x_offset} ${rplidar_y_offset} ${rplidar_z_offset}"
+              rpy="0 0 ${pi/2}"/>
+    </xacro:rplidar>
+  </xacro:if>
 
   <xacro:camera_bracket name="oakd_camera_bracket">
     <origin xyz="${camera_mount_x_offset} ${camera_mount_y_offset} ${camera_mount_z_offset}"/>
