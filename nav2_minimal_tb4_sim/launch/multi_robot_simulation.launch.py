@@ -31,7 +31,7 @@ def generate_launch_description() -> LaunchDescription:
         {'namespace': 'tb1', 'name': 'tb4_1', 'x': '0.0',  'y': '0.0',  'z': '0.05', 'R': '0.0', 'P': '0.0', 'Y': '0.0'},
         {'namespace': 'tb2', 'name': 'tb4_2', 'x': '1.5',  'y': '0.0',  'z': '0.05', 'R': '0.0', 'P': '0.0', 'Y': '0.0'},
         {'namespace': 'tb3', 'name': 'tb4_3', 'x': '2.0',  'y': '0.0',  'z': '0.05', 'R': '0.0', 'P': '0.0', 'Y': '0.0'},
-        # {'namespace': 'tb4', 'name': 'tb4_4', 'x': '2.5',  'y': '0.0',  'z': '0.05', 'R': '0.0', 'P': '0.0', 'Y': '0.0'},
+        {'namespace': 'tb4', 'name': 'tb4_4', 'x': '2.5',  'y': '0.0',  'z': '0.05', 'R': '0.0', 'P': '0.0', 'Y': '0.0'},
         # Add more robots as needed
     ]
 

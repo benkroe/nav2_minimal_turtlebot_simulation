@@ -214,7 +214,7 @@
     <!-- ArUco Marker (OGRE2 PBR material for Gazebo Sim) -->
     <model name="aruco_marker_0">
       <static>true</static>
-      <pose>0.0 2.4 0.33 0 1.5708 0</pose>
+      <pose>0.0 2.4 0.23 0 1.5708 0</pose>
       <link name='marker'>
         <visual name='visual'>
           <geometry>
