@@ -4,10 +4,9 @@
 
     <physics type="ode">
       <max_step_size>0.02</max_step_size>
-      <real_time_factor>1.0</real_time_factor>
+      <real_time_factor>2.0</real_time_factor>
     </physics>
 
-    <!-- Lighting -->
     <scene>
       <ambient>1 1 1 1</ambient>
       <background>1 1 1 1</background>
@@ -126,105 +125,60 @@
       </link>
     </model>
 
-    <!-- Octagonal walls -->
-    <!-- Each wall = box, rotated into octagon -->
+    <!-- Square walls (5x5 m arena) -->
     <model name="walls">
       <static>true</static>
       <link name="link">
-        <!-- Define 8 walls -->
-        <!-- North -->
+        <!-- North wall -->
         <visual name="wall_n">
-          <pose>0 3 0.5 0 0 0</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
+          <pose>0 2.5 0.5 0 0 0</pose>
+          <geometry><box><size>5 0.1 1</size></box></geometry>
           <material><ambient>0.6 0.4 0.2 1</ambient><diffuse>0.6 0.4 0.2 1</diffuse></material>
         </visual>
         <collision name="wall_n_col">
-          <pose>0 3 0.5 0 0 0</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
+          <pose>0 2.5 0.5 0 0 0</pose>
+          <geometry><box><size>5 0.1 1</size></box></geometry>
         </collision>
 
-        <!-- NE -->
-        <visual name="wall_ne">
-          <pose>2.1 2.1 0.5 0 0 -0.785</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
-          <material><ambient>0.6 0.4 0.2 1</ambient><diffuse>0.6 0.4 0.2 1</diffuse></material>
-        </visual>
-        <collision name="wall_ne_col">
-          <pose>2.1 2.1 0.5 0 0 -0.785</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
-        </collision>
-
-        <!-- East -->
+        <!-- East wall -->
         <visual name="wall_e">
-          <pose>3 0 0.5 0 0 1.5708</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
+          <pose>2.5 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.1 5 1</size></box></geometry>
           <material><ambient>0.6 0.4 0.2 1</ambient><diffuse>0.6 0.4 0.2 1</diffuse></material>
         </visual>
         <collision name="wall_e_col">
-          <pose>3 0 0.5 0 0 1.5708</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
+          <pose>2.5 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.1 5 1</size></box></geometry>
         </collision>
 
-        <!-- SE -->
-        <visual name="wall_se">
-          <pose>2.1 -2.1 0.5 0 0 0.785</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
-          <material><ambient>0.6 0.4 0.2 1</ambient><diffuse>0.6 0.4 0.2 1</diffuse></material>
-        </visual>
-        <collision name="wall_se_col">
-          <pose>2.1 -2.1 0.5 0 0 0.785</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
-        </collision>
-
-        <!-- South -->
+        <!-- South wall -->
         <visual name="wall_s">
-          <pose>0 -3 0.5 0 0 0</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
+          <pose>0 -2.5 0.5 0 0 0</pose>
+          <geometry><box><size>5 0.1 1</size></box></geometry>
           <material><ambient>0.6 0.4 0.2 1</ambient><diffuse>0.6 0.4 0.2 1</diffuse></material>
         </visual>
         <collision name="wall_s_col">
-          <pose>0 -3 0.5 0 0 0</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
+          <pose>0 -2.5 0.5 0 0 0</pose>
+          <geometry><box><size>5 0.1 1</size></box></geometry>
         </collision>
 
-        <!-- SW -->
-        <visual name="wall_sw">
-          <pose>-2.1 -2.1 0.5 0 0 -0.785</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
-          <material><ambient>0.6 0.4 0.2 1</ambient><diffuse>0.6 0.4 0.2 1</diffuse></material>
-        </visual>
-        <collision name="wall_sw_col">
-          <pose>-2.1 -2.1 0.5 0 0 -0.785</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
-        </collision>
-
-        <!-- West -->
+        <!-- West wall -->
         <visual name="wall_w">
-          <pose>-3 0 0.5 0 0 1.5708</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
+          <pose>-2.5 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.1 5 1</size></box></geometry>
           <material><ambient>0.6 0.4 0.2 1</ambient><diffuse>0.6 0.4 0.2 1</diffuse></material>
         </visual>
         <collision name="wall_w_col">
-          <pose>-3 0 0.5 0 0 1.5708</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
-        </collision>
-
-        <!-- NW -->
-        <visual name="wall_nw">
-          <pose>-2.1 2.1 0.5 0 0 0.785</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
-          <material><ambient>0.6 0.4 0.2 1</ambient><diffuse>0.6 0.4 0.2 1</diffuse></material>
-        </visual>
-        <collision name="wall_nw_col">
-          <pose>-2.1 2.1 0.5 0 0 0.785</pose>
-          <geometry><box><size>2.8 0.1 1</size></box></geometry>
+          <pose>-2.5 0 0.5 0 0 0</pose>
+          <geometry><box><size>0.1 5 1</size></box></geometry>
         </collision>
 
       </link>
     </model>
 
     <!-- Red ball target -->
-    <model name="red_ball">
+    <!-- <model name="red_ball">
+      <static>false</static>
       <pose>1.0 1.5 0.17 0 0 0</pose> 
       <link name="link">
         <inertial>
@@ -253,14 +207,39 @@
               <radius>0.17</radius>
             </sphere>
           </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>1.0</mu>
-                <mu2>1.0</mu2>
-              </ode>
-            </friction>
-          </surface>
+        </collision>
+      </link>
+    </model> -->
+
+    <!-- ArUco Marker (OGRE2 PBR material for Gazebo Sim) -->
+    <model name="aruco_marker_0">
+      <static>true</static>
+      <pose>0.0 2.4 0.33 0 1.5708 0</pose>
+      <link name='marker'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+          s    <size>0.35 0.001 0.35</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+
+            <pbr>
+              <metal>
+                <albedo_map>file:///home/ben/ros2_ws/nav2_minimal_turtlebot_simulation/nav2_minimal_tb4_sim/worlds/models/aruco_visual_marker_1/materials/textures/aruco_mark_1.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.35 0.35 0.00001</size>
+            </box>
+          </geometry>
         </collision>
       </link>
     </model>
