@@ -230,15 +230,15 @@
       </link>
     </model> -->
 
-    <!-- ArUco Marker (OGRE2 PBR material for Gazebo Sim) -->
+    <!-- ArUco Marker 0 - Top wall, facing middle -->
     <model name="aruco_marker_0">
       <static>true</static>
-      <pose>0.0 2.4 0.23 0 1.5708 0</pose>
+      <pose>0.0 2.4 0.23 3.1416 1.5708 0</pose>
       <link name='marker'>
         <visual name='visual'>
           <geometry>
             <box>
-          s    <size>0.35 0.001 0.35</size>
+              <size>0.35 0.001 0.35</size>
             </box>
           </geometry>
           <material>
@@ -248,7 +248,7 @@
 
             <pbr>
               <metal>
-                <albedo_map>file:///home/ben/ros2_ws/nav2_minimal_turtlebot_simulation/nav2_minimal_tb4_sim/worlds/models/aruco_visual_marker_1/materials/textures/aruco_mark_1.png</albedo_map>
+                <albedo_map>file:///home/ben/ros2_ws/nav2_minimal_turtlebot_simulation/nav2_minimal_tb4_sim/worlds/models/textures/aruco_mark_1.png</albedo_map>
               </metal>
             </pbr>
           </material>
@@ -256,7 +256,73 @@
         <collision name='collision'>
           <geometry>
             <box>
-              <size>0.35 0.35 0.00001</size>
+              <size>0.35 0.001 0.35</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- ArUco Marker 1 - Bottom wall, facing middle -->
+    <model name="aruco_marker_1">
+      <static>true</static>
+      <pose>0.0 -2.4 0.23 3.1416 1.5708 3.1416</pose>
+      <link name='marker'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.35 0.001 0.35</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+
+            <pbr>
+              <metal>
+                <albedo_map>file:///home/ben/ros2_ws/nav2_minimal_turtlebot_simulation/nav2_minimal_tb4_sim/worlds/models/textures/aruco_mark_1.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.35 0.001 0.35</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- ArUco Marker 2 - Right wall, facing middle -->
+    <model name="aruco_marker_2">
+      <static>true</static>
+      <pose>2.4 0.0 0.23 3.1416 1.5708 1.5708</pose>
+      <link name='marker'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.35 0.001 0.35</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+
+            <pbr>
+              <metal>
+                <albedo_map>file:///home/ben/ros2_ws/nav2_minimal_turtlebot_simulation/nav2_minimal_tb4_sim/worlds/models/textures/aruco_mark_1.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.35 0.001 0.35</size>
             </box>
           </geometry>
         </collision>

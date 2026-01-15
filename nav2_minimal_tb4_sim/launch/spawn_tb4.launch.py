@@ -80,11 +80,13 @@ def generate_launch_description():
         default_value=os.path.join(desc_dir, 'rviz', 'config.rviz'),
         description='Full path to the RVIZ config file to use')
 
-    # Select bridge config: headless (no joint_states) when RViz is disabled
+    # Select bridge config: full config with joint_states when RViz is enabled,
+    # config without joint_states when RViz is disabled (for performance)
+    # Both include ground_truth_odom and proximity sensors
     bridge_config_file = PythonExpression([
         "'" + os.path.join(sim_dir, 'configs', 'tb4_bridge.yaml') + "' if '",
         use_rviz,
-        "' == 'True' else '" + os.path.join(sim_dir, 'configs', 'tb4_bridge_headless.yaml') + "'"
+        "' == 'True' else '" + os.path.join(sim_dir, 'configs', 'tb4_bridge_no_rviz.yaml') + "'"
     ])
 
     bridge = Node(
