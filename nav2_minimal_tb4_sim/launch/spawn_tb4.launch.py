@@ -20,7 +20,7 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition
-from launch.substitutions import LaunchConfiguration, Command, TextSubstitution, PathJoinSubstitution
+from launch.substitutions import LaunchConfiguration, Command, TextSubstitution, PathJoinSubstitution, PythonExpression
 
 from launch_ros.actions import Node
 
@@ -80,6 +80,13 @@ def generate_launch_description():
         default_value=os.path.join(desc_dir, 'rviz', 'config.rviz'),
         description='Full path to the RVIZ config file to use')
 
+    # Select bridge config: headless (no joint_states) when RViz is disabled
+    bridge_config_file = PythonExpression([
+        "'" + os.path.join(sim_dir, 'configs', 'tb4_bridge.yaml') + "' if '",
+        use_rviz,
+        "' == 'True' else '" + os.path.join(sim_dir, 'configs', 'tb4_bridge_headless.yaml') + "'"
+    ])
+
     bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
@@ -87,9 +94,7 @@ def generate_launch_description():
         namespace=namespace,
         parameters=[
             {
-                'config_file': os.path.join(
-                    sim_dir, 'configs', 'tb4_bridge.yaml'
-                ),
+                'config_file': bridge_config_file,
                 'use_sim_time': use_sim_time,
                 'expand_gz_topic_names': True,
             }
@@ -107,18 +112,6 @@ def generate_launch_description():
             'use_sim_time': use_sim_time,
         }],
         arguments=[PathJoinSubstitution([namespace, 'rgbd_camera/image'])]
-    )
-
-    camera_bridge_depth = Node(
-        package='ros_gz_image',
-        executable='image_bridge',
-        name='bridge_gz_ros_camera_depth',
-        namespace=namespace,
-        output='screen',
-        parameters=[{
-            'use_sim_time': use_sim_time,
-        }],
-        arguments=[PathJoinSubstitution([namespace, 'rgbd_camera/depth_image'])]
     )
 
     # Process xacro file with namespace parameter
@@ -180,7 +173,6 @@ def generate_launch_description():
     ld.add_action(robot_state_publisher)
     ld.add_action(bridge)
     ld.add_action(camera_bridge_image)
-    ld.add_action(camera_bridge_depth)
     ld.add_action(spawn_model)
     ld.add_action(rviz_cmd)
     return ld

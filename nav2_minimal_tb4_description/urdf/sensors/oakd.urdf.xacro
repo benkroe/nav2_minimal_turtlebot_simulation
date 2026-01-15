@@ -27,9 +27,13 @@
 
   <link name="${base_frame}">
     <visual>
+      <origin xyz="${collision_offset_x} ${collision_offset_y} ${collision_offset_z}" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://nav2_minimal_tb4_description/meshes/${name}_${model}.dae" scale="1 1 1" />
+        <box size="${collision_length_x} ${collision_length_y} ${collision_length_z}"/>
       </geometry>
+      <material name="darkgrey">
+        <color rgba="0.15 0.15 0.15 1"/>
+      </material>
     </visual>
     <collision>
       <origin xyz="${collision_offset_x} ${collision_offset_y} ${collision_offset_z}"/>
@@ -43,6 +47,10 @@
 	             iyy="0.00001527320" iyz="0.0" izz="0.00001605536" />
     </inertial>
   </link>
+
+  <gazebo reference="${base_frame}">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
 
   <!-- RGB Camera -->
   <link name="${name}_rgb_camera_frame">
@@ -136,7 +144,7 @@
         <optical_frame_id>${name}_rgb_camera_optical_frame</optical_frame_id>
       </camera>
       <update_rate>10</update_rate>
-      <visualize>true</visualize>
+      <visualize>false</visualize>
       <topic>${namespace}/rgbd_camera</topic>
     </sensor>
     <xacro:material_darkgray/>

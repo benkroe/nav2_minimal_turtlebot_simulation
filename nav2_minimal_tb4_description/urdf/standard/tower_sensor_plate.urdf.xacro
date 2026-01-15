@@ -18,9 +18,13 @@
 
   <link name="${link_name}">
     <visual>
+      <origin xyz="0 0 0.001" rpy="0 0 0"/>
       <geometry>
-       <mesh filename="package://nav2_minimal_tb4_description/meshes/tower_sensor_plate.dae" scale="1 1 1" />
+        <cylinder radius="0.137" length="0.003"/>
       </geometry>
+      <material name="darkgrey">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
     </visual>
     <collision>
       <origin xyz="0 0 0.001"/>
@@ -34,6 +38,10 @@
 	             iyy="0.00083033498" iyz="0.0" izz="0.00175985947" />
     </inertial>
   </link>
+
+  <gazebo reference="${link_name}">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
 
   <gazebo reference="${joint_name}">
     <preserveFixedJoint>true</preserveFixedJoint>

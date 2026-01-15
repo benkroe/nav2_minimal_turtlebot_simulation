@@ -14,7 +14,8 @@
 
   <!-- Mechanical properties -->
   <xacro:property name="body_z_offset"           value="${-2.5*cm2m}" />
-  <xacro:property name="body_collision_z_offset" value="${1*cm2m}" />
+  <!-- Raise collision up to avoid floor penetration when spawning (more clearance) -->
+  <xacro:property name="body_collision_z_offset" value="${3*cm2m}" />
   <xacro:property name="body_mass"               value="2.300" />
   <xacro:property name="body_radius"             value="${16.4*cm2m}" />
   <xacro:property name="body_length"             value="${6*cm2m}" />
@@ -40,13 +41,16 @@
   <!-- Create 3 base definition-->
   <link name="base_link">
     <visual>
-      <origin xyz="0 0 ${body_z_offset + base_link_z_offset}" rpy="0 0 ${pi/2}"/>
+      <origin xyz="0 0 ${body_z_offset + base_link_z_offset}" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://nav2_minimal_tb4_description/meshes/body_visual.dae" />
+        <cylinder length="${body_length}" radius="${body_radius}"/>
       </geometry>
+      <material name="darkgrey">
+        <color rgba="0.3 0.3 0.3 1"/>
+      </material>
     </visual>
     <collision name="create3_base_collision">
-      <origin xyz="0 0 ${body_z_offset + body_collision_z_offset  + base_link_z_offset}" rpy="0 0 ${pi/2}"/>
+      <origin xyz="0 0 ${body_z_offset + body_collision_z_offset  + base_link_z_offset}" rpy="0 0 0"/>
       <geometry>
         <cylinder length="${body_length}" radius="${body_radius}"/>
       </geometry>

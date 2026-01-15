@@ -72,14 +72,18 @@
   <!-- Turtlebot4 shell definition -->
   <link name="shell_link">
     <visual>
-      <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://nav2_minimal_tb4_description/meshes/shell.dae" scale="1 1 1" />
+        <box size="${shell_length} ${shell_radius*2} 0.08"/>
       </geometry>
+      <material name="darkgrey">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
     </visual>
     <collision name="shell_collision">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://nav2_minimal_tb4_description/meshes/shell_collision.dae" scale="1 1 1" />
+        <box size="${shell_length} ${shell_radius*2} 0.08"/>
       </geometry>
     </collision>
     <inertial>
