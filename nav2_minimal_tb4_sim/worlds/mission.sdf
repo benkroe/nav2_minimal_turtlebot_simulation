@@ -30,7 +30,7 @@
     <plugin name="gz::sim::systems::Sensors" filename="gz-sim-sensors-system">
         <render_engine>ogre2</render_engine>
     </plugin>
-
+´´
     <!-- Grey floor (thicker to avoid sinking) -->
     <model name="floor">
       <static>true</static>
