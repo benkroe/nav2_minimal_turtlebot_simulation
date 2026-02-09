@@ -101,6 +101,48 @@
     <xacro:material_black/>
   </gazebo>
 
+  <!-- ArUco marker at the back -->
+  <joint name="aruco_marker_joint" type="fixed">
+    <parent link="shell_link"/>
+    <child link="aruco_marker_link"/>
+    <origin xyz="-0.15 0 0.23" rpy="0 1.5708 1.5708"/>
+  </joint>
+
+  <link name="aruco_marker_link">
+    <visual>
+      <geometry>
+        <box size="0.35 0.001 0.35"/>
+      </geometry>
+      <material name="aruco_marker">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.35 0.001 0.35"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="0.000001" ixy="0" ixz="0" iyy="0.000001" iyz="0" izz="0.000001"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="aruco_marker_link">
+    <visual>
+      <material>
+        <ambient>1 1 1 1</ambient>
+        <diffuse>1 1 1 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <pbr>
+          <metal>
+            <albedo_map>file:///home/ben/ros2_ws/nav2_minimal_turtlebot_simulation/nav2_minimal_tb4_sim/worlds/models/textures/aruco_mark_1.png</albedo_map>
+          </metal>
+        </pbr>
+      </material>
+    </visual>
+  </gazebo>
+
   <xacro:weight_block name="front_left_bottom_weight_block">
     <origin xyz="${weight_x_offset} ${weight_y_offset} ${bottom_weight_z_offset}"/>
   </xacro:weight_block>

@@ -9,31 +9,42 @@ import numpy as np
 import os
 from pathlib import Path
 
-def generate_aruco_marker(marker_id, size=200, output_path=None):
+def generate_aruco_marker(marker_id, size=200, border_size=40, output_path=None):
     """
-    Generate an ArUco marker and save as PNG.
+    Generate an ArUco marker with white quiet zone and save as PNG.
     
     Args:
-        marker_id: ID of the marker (0-99 for DICT_5X5_100)
-        size: Size of the generated marker in pixels (default 200)
+        marker_id: ID of the marker (0-99 for DICT_4X4_100)
+        size: Size of the inner marker in pixels
+        border_size: Width of white border in pixels
         output_path: Path to save the PNG file
     
     Returns:
-        numpy array of the marker image
+        numpy array of the final marker image
     """
-    # Use the 4x4 dictionary with 100 markers (DICT_4X4_100)
-    aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_100)
-    
-    # Generate the marker
-    marker_image = cv2.aruco.generateImageMarker(aruco_dict, marker_id, size)
-    
-    # Save if output path provided
+    aruco_dict = cv2.aruco.getPredefinedDictionary(
+        cv2.aruco.DICT_4X4_100
+    )
+
+    # Generate inner marker (black border included)
+    marker = cv2.aruco.generateImageMarker(aruco_dict, marker_id, size)
+
+    # Create white canvas
+    final_size = size + 2 * border_size
+    canvas = np.ones((final_size, final_size), dtype=np.uint8) * 255
+
+    # Place marker in center
+    canvas[
+        border_size:border_size + size,
+        border_size:border_size + size
+    ] = marker
+
     if output_path:
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
-        cv2.imwrite(output_path, marker_image)
+        cv2.imwrite(output_path, canvas)
         print(f"✓ Generated ArUco marker {marker_id} -> {output_path}")
-    
-    return marker_image
+
+    return canvas
 
 
 def main():
