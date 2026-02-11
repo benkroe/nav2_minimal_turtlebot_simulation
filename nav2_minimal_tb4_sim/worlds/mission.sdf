@@ -231,7 +231,7 @@
     </model> -->
 
     <!-- ArUco Marker 0 - Top wall, facing middle -->
-    <model name="aruco_marker_0">
+    <!-- <model name="aruco_marker_0">
       <static>true</static>
       <pose>0.0 2.4 0.23 3.1416 1.5708 0</pose>
       <link name='marker'>
@@ -261,10 +261,10 @@
           </geometry>
         </collision>
       </link>
-    </model>
+    </model> -->
 
     <!-- ArUco Marker 1 - Bottom wall, facing middle -->
-    <model name="aruco_marker_1">
+    <!-- <model name="aruco_marker_1">
       <static>true</static>
       <pose>0.0 -2.4 0.23 3.1416 1.5708 3.1416</pose>
       <link name='marker'>
@@ -294,7 +294,7 @@
           </geometry>
         </collision>
       </link>
-    </model>
+    </model> -->
 
     <!-- ArUco Marker 2 - Right wall, facing middle -->
     <!-- <model name="aruco_marker_2">
